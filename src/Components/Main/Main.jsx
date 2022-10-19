@@ -4,8 +4,14 @@ import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
+import Select from "react-select";
 
 const { kakao } = window;
+const options = [
+  { value: "FD6", label: "음식점" },
+  { value: "strawberry", label: "카페" },
+  { value: "vanilla", label: "편의점" },
+];
 
 const Main = ({
   place,
@@ -21,8 +27,14 @@ const Main = ({
   const [open, setOpen] = useState(true);
   const [arrow, setArrow] = useState(true);
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const CategorySelect = (e) => {};
+  const CategorySelect = (target) => {
+    const filterFood = Places.filter(
+      (value) => value.category_group_code === "FD6"
+    );
+    setPlaces(filterFood);
+  };
 
   const toggleSearchList = () => {
     setOpen((open) => !open);
@@ -208,11 +220,13 @@ const Main = ({
               <div className="searchMenu">
                 <div className="searchBtn">
                   <form className="searchBtn_in" onSubmit={searchSubmit}>
-                    <select name="" className="category" id="">
-                      <option value="">전체</option>
-                      <option value="">음식점</option>
-                      <option value="">카페</option>
-                    </select>
+                    <Select
+                      // styles={customStyles}
+                      defaultValue={selectedOption}
+                      onChange={setSelectedOption}
+                      options={options}
+                      placeholder="전체"
+                    />
                     <input
                       className="searchInput"
                       type="text"
@@ -235,13 +249,6 @@ const Main = ({
                           <li className="searchInfoCategory">
                             {item.category_name}
                           </li>
-                          <div className="searchInfoImg">
-                            <img
-                              src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg"
-                              alt="0"
-                            />
-                          </div>
-
                           <div className="menuSublist">
                             {item.road_address_name ? (
                               <div className="searchInfoAddress">

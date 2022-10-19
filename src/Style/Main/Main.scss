@@ -40,15 +40,27 @@
   }
 }
 .searchBtn_in {
-  display: inline-block;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 15px;
 }
-.searchBtn_in > input {
-  min-width: 200px;
+.css-b62m3t-container {
+  // margin-bottom: 10px;
+  margin-top: -7px;
+  width: 150px;
+}
+.css-14el2xx-placeholder {
+  cursor: pointer;
+}
+.searchInput {
+  max-width: 140px;
   height: 100%;
-  margin-left: 40px;
+  margin-left: 20px;
   border: 0px;
   font-size: 18px;
+  margin-top: -3px;
 }
 .searchButton {
   position: absolute;
@@ -58,7 +70,7 @@
   background-color: transparent;
   width: 30px;
   height: 30px;
-  margin-left: 30px;
+  margin-left: 350px;
   margin-top: 3px;
   border: 0px;
   cursor: pointer;
@@ -119,6 +131,7 @@
   width: 350px;
   margin-top: 5px;
   word-break: keep-all;
+  color: rgb(46, 46, 202);
 }
 .menulist img {
   position: relative;
@@ -133,24 +146,24 @@
   height: 30px;
   left: 30px;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0.7;
 }
 .menuSublist {
   display: block;
   position: relative;
   left: 30px;
-  line-height: 22px;
   font-size: 0.9rem;
   width: 340px;
   word-break: keep-all;
+  color: black;
+  margin-top: -7px;
 }
 .searchInfoAddress {
   display: block;
   flex-direction: column;
   position: relative;
   height: 25px;
-  margin-top: 10px;
 }
 .searchPagination {
   margin: auto;
